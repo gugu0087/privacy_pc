@@ -5,6 +5,9 @@
     <application
         android:allowBackup="true"
         android:supportsRtl="true">
+        <activity
+            android:name=".personalinfo.PersonalInfoActivity"
+            android:exported="false" />
         <activity android:name=".systempermission.SystemPermissionActivity" />
     </application>
 

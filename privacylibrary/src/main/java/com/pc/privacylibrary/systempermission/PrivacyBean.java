@@ -1,5 +1,7 @@
 package com.pc.privacylibrary.systempermission;
 
+import android.os.Parcel;
+
 import androidx.annotation.DrawableRes;
 
 /**
@@ -10,11 +12,29 @@ import androidx.annotation.DrawableRes;
 public class PrivacyBean {
     private String name;
     private String id;
-
     private int leftIcon;
-
-    @DrawableRes
     private int rightIcon;
+    private String manifest;
+    private String manifestExtra;
+
+    public String getManifestExtra() {
+        return manifestExtra;
+    }
+
+    public void setManifestExtra(String manifestExtra) {
+        this.manifestExtra = manifestExtra;
+    }
+
+    public PrivacyBean() {
+    }
+
+    public String getManifest() {
+        return manifest;
+    }
+
+    public void setManifest(String manifest) {
+        this.manifest = manifest;
+    }
 
     public int getLeftIcon() {
         return leftIcon;
@@ -47,4 +67,6 @@ public class PrivacyBean {
     public void setId(String id) {
         this.id = id;
     }
+
+
 }

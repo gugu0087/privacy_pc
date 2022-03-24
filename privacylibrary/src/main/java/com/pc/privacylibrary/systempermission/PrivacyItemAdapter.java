@@ -20,14 +20,12 @@ import androidx.recyclerview.widget.RecyclerView;
  * @describe：
  */
 public class PrivacyItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private List<PrivacyBean> dataList;
-    private Context mContext;
-    private LayoutInflater inflater;
+    private final List<PrivacyBean> dataList;
+    private final LayoutInflater inflater;
 
     public PrivacyItemAdapter(Context context, List<PrivacyBean> dataList) {
         this.dataList = dataList;
-        mContext = context;
-        inflater = LayoutInflater.from(mContext);
+        inflater = LayoutInflater.from(context);
     }
 
     @NonNull
@@ -46,7 +44,10 @@ public class PrivacyItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
          PrivacyBean bean = dataList.get(position);
         itemHolder.tvName.setText(bean.getName());
         if (bean.getLeftIcon() != 0) {
+            itemHolder.ivLeftIcon.setVisibility(View.VISIBLE);
             itemHolder.ivLeftIcon.setImageResource(bean.getLeftIcon());
+        }else {
+            itemHolder.ivLeftIcon.setVisibility(View.GONE);
         }
         if (bean.getRightIcon() != 0) {
             itemHolder.ivLeftIcon.setImageResource(bean.getRightIcon());
