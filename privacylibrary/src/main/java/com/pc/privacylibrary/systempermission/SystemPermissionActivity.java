@@ -1,10 +1,13 @@
-package com.pc.privacylibrary;
+package com.pc.privacylibrary.systempermission;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ImageView;
+
+import com.pc.privacylibrary.R;
+import com.pc.privacylibrary.base.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +17,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class PrivacyInfoActivity extends AppCompatActivity {
+/**
+ * 系统权限管理
+ */
+public class SystemPermissionActivity extends BaseActivity {
 
     private RecyclerView recycleView;
     private List<PrivacyBean> resultList;
@@ -24,12 +30,7 @@ public class PrivacyInfoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_privacy_info);
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.hide(); //隐藏标题栏
-        }
-        StatusBarUtils.initStatusBar(this, true, false);
+        setContentView(R.layout.activity_system_permission);
         initView();
         initData();
     }
@@ -44,6 +45,7 @@ public class PrivacyInfoActivity extends AppCompatActivity {
         recycleView.setAdapter(itemAdapter);
         itemAdapter.setOnItemClickListener(v -> startActivity(getAppDetailSettingIntent()));
         ivBack.setOnClickListener(v -> finish());
+        findViewById(R.id.tvToSettings).setOnClickListener(v -> startActivity(getAppDetailSettingIntent()));
     }
 
     @SuppressLint("NotifyDataSetChanged")

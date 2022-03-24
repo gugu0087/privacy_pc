@@ -1,10 +1,12 @@
-package com.pc.privacylibrary;
+package com.pc.privacylibrary.systempermission;
 
 import android.app.Activity;
 import android.os.Build;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+
+import com.pc.privacylibrary.R;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;

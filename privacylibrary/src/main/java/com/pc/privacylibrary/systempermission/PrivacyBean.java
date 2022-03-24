@@ -1,4 +1,4 @@
-package com.pc.privacylibrary;
+package com.pc.privacylibrary.systempermission;
 
 import androidx.annotation.DrawableRes;
 

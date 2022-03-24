@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.pc.privacylibrary.PrivacyInfoActivity;
+import com.pc.privacylibrary.systempermission.SystemPermissionActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.tvClick).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               startActivity(new Intent(MainActivity.this, PrivacyInfoActivity.class));
+               startActivity(new Intent(MainActivity.this, SystemPermissionActivity.class));
             }
         });
     }
