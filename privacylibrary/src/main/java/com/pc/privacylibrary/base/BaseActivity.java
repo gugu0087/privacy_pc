@@ -22,6 +22,5 @@ public abstract class BaseActivity extends AppCompatActivity {
             actionBar.hide(); //隐藏标题栏
         }
         StatusBarUtils.initStatusBar(this, true, false);
-        PermissionUtils.init();
     }
 }
