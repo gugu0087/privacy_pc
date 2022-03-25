@@ -6,6 +6,15 @@
         android:allowBackup="true"
         android:supportsRtl="true">
         <activity
+            android:name=".personalinfo.AppInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".personalinfo.AccountInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".personalinfo.PersonInfoScanActivity"
+            android:exported="false" />
+        <activity
             android:name=".PrivacyManagerActivity"
             android:exported="false" />
         <activity

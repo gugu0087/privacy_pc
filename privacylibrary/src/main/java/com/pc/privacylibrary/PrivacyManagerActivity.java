@@ -1,19 +1,11 @@
 package com.pc.privacylibrary;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
 import com.pc.privacylibrary.base.BaseActivity;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 public abstract class PrivacyManagerActivity extends BaseActivity {
-
-    private ConstraintLayout csPersonalInfoManager;
-    private ConstraintLayout csPersonInfoDownLoad;
-    private ConstraintLayout csSystemPermission;
-    private ConstraintLayout csPrivacyPolicy;
-    private ConstraintLayout csPermissionIntro;
 
     /**
      * 个人信息查阅管理点击回调
@@ -47,17 +39,11 @@ public abstract class PrivacyManagerActivity extends BaseActivity {
         findViewById(R.id.ivGoBack).setOnClickListener(view -> finish());
         ((TextView) findViewById(R.id.tvBarTitle)).setText("隐私管理");
 
-        csPersonalInfoManager = findViewById(R.id.csPersonalInfoManager);
-        csPersonInfoDownLoad = findViewById(R.id.csPersonInfoDownLoad);
-        csSystemPermission = findViewById(R.id.csSystemPermission);
-        csPrivacyPolicy = findViewById(R.id.csPrivacyPolicy);
-        csPermissionIntro = findViewById(R.id.csPermissionIntro);
-
-        csPersonalInfoManager.setOnClickListener(view -> onPersonalInfoManager());
-        csPersonInfoDownLoad.setOnClickListener(view -> onPersonalInfoDownload());
-        csSystemPermission.setOnClickListener(view -> onSystemPermission());
-        csPrivacyPolicy.setOnClickListener(view -> onPrivacyPolicy());
-        csPermissionIntro.setOnClickListener(view -> onPermissionIntro());
+        findViewById(R.id.csPersonalInfoManager).setOnClickListener(view -> onPersonalInfoManager());
+        findViewById(R.id.csPersonInfoDownLoad).setOnClickListener(view -> onPersonalInfoDownload());
+        findViewById(R.id.csSystemPermission).setOnClickListener(view -> onSystemPermission());
+        findViewById(R.id.csPrivacyPolicy).setOnClickListener(view -> onPrivacyPolicy());
+        findViewById(R.id.csPermissionIntro).setOnClickListener(view -> onPermissionIntro());
 
     }
 

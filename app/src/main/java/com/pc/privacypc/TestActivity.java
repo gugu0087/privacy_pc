@@ -1,16 +1,17 @@
 package com.pc.privacypc;
 
 import android.content.Intent;
-import android.util.Log;
-
 import com.pc.privacylibrary.PrivacyManagerActivity;
+import com.pc.privacylibrary.base.DataManager;
+import com.pc.privacylibrary.personalinfo.PersonInfoScanActivity;
 import com.pc.privacylibrary.systempermission.SystemPermissionActivity;
 
 public class TestActivity extends PrivacyManagerActivity {
     @Override
     protected void onPersonalInfoManager() {
-        Log.d("xyc", "onGetPermission: sdsd");
-
+        DataManager.phoneNumber = "18820126874";
+        DataManager.registerTime= "2022-08-09";
+        startActivity(new Intent(this, PersonInfoScanActivity.class));
     }
 
     @Override
