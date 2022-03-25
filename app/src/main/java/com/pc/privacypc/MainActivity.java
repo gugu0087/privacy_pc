@@ -13,6 +13,7 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 
+import com.pc.privacylibrary.PrivacyManagerActivity;
 import com.pc.privacylibrary.systempermission.PrivacyBean;
 import com.pc.privacylibrary.systempermission.SystemPermissionActivity;
 
@@ -23,15 +24,6 @@ import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.BlockingQueue;
 
 public class MainActivity extends AppCompatActivity {
-    @SuppressLint("HandlerLeak")
-    Handler handler = new Handler() {
-        @Override
-        public void handleMessage(@NonNull Message msg) {
-            super.handleMessage(msg);
-            Log.d("xyc", "handleMessage: " + msg.obj);
-        }
-    };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, SystemPermissionActivity.class));
+              //  startActivity(new Intent(MainActivity.this, SystemPermissionActivity.class));
+                startActivity(new Intent(MainActivity.this, TestActivity.class));
             }
         });
     }

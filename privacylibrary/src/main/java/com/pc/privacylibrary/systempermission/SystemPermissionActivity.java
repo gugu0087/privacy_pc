@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.widget.TextView;
+
 import com.pc.privacylibrary.R;
 import com.pc.privacylibrary.base.BaseActivity;
 import com.pc.privacylibrary.base.PermissionUtils;
@@ -37,7 +39,7 @@ public class SystemPermissionActivity extends BaseActivity {
         recycleView.setLayoutManager(new LinearLayoutManager(this));
         recycleView.setAdapter(itemAdapter);
         itemAdapter.setOnItemClickListener(v -> startActivity(getAppDetailSettingIntent()));
-        findViewById(R.id.ivBack).setOnClickListener(v -> finish());
+        findViewById(R.id.ivGoBack).setOnClickListener(v -> finish());
         findViewById(R.id.tvToSettings).setOnClickListener(v -> startActivity(getAppDetailSettingIntent()));
     }
 

@@ -76,8 +76,8 @@ public class PermissionUtils {
         bean7.setName("通讯录");
         bean7.setManifest("7");
         bean7.setLeftIcon(R.mipmap.contract);
-        bean6.setManifest(Manifest.permission.WRITE_CONTACTS);
-        bean6.setManifestExtra(Manifest.permission.READ_CONTACTS);
+        bean7.setManifest(Manifest.permission.WRITE_CONTACTS);
+        bean7.setManifestExtra(Manifest.permission.READ_CONTACTS);
         permissions.add(bean7);
 
         PrivacyBean bean8 = new PrivacyBean();
