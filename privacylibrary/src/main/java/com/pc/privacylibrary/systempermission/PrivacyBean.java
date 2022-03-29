@@ -1,6 +1,9 @@
 package com.pc.privacylibrary.systempermission;
 
 import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
 
 import androidx.annotation.DrawableRes;
 
@@ -9,13 +12,34 @@ import androidx.annotation.DrawableRes;
  * @date: 2022/3/22
  * @describe：
  */
-public class PrivacyBean {
+public class PrivacyBean implements Parcelable {
     private String name;
     private String id;
     private int leftIcon;
     private int rightIcon;
     private String manifest;
     private String manifestExtra;
+
+    protected PrivacyBean(Parcel in) {
+        name = in.readString();
+        id = in.readString();
+        leftIcon = in.readInt();
+        rightIcon = in.readInt();
+        manifest = in.readString();
+        manifestExtra = in.readString();
+    }
+
+    public static final Creator<PrivacyBean> CREATOR = new Creator<PrivacyBean>() {
+        @Override
+        public PrivacyBean createFromParcel(Parcel in) {
+            return new PrivacyBean(in);
+        }
+
+        @Override
+        public PrivacyBean[] newArray(int size) {
+            return new PrivacyBean[size];
+        }
+    };
 
     public String getManifestExtra() {
         return manifestExtra;
@@ -69,4 +93,18 @@ public class PrivacyBean {
     }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(name);
+        parcel.writeString(id);
+        parcel.writeInt(leftIcon);
+        parcel.writeInt(rightIcon);
+        parcel.writeString(manifest);
+        parcel.writeString(manifestExtra);
+    }
 }

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.pc.privacylibrary.R;
@@ -22,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class SystemPermissionActivity extends BaseActivity {
     private final List<PrivacyBean> resultList = new ArrayList<>();
     private PrivacyItemAdapter itemAdapter;
+    public static String LIST_PARAMS = "resultList";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +31,25 @@ public class SystemPermissionActivity extends BaseActivity {
         setContentView(R.layout.activity_system_permission);
         PermissionUtils.init();
         initView();
-        initDefaultData();
+        getIntentData();
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private void getIntentData() {
+        Intent intent = getIntent();
+        try {
+            List<PrivacyBean> params = intent.getParcelableArrayListExtra(LIST_PARAMS);
+            if (params == null || params.size() == 0) {
+                initDefaultData();
+                return;
+            }
+            resultList.clear();
+            resultList.addAll(params);
+            itemAdapter.notifyDataSetChanged();
+        } catch (Exception e) {
+            Log.d("xyc", "getIntentData: e=" + e.getMessage());
+            initDefaultData();
+        }
     }
 
     private void initView() {
@@ -40,7 +60,6 @@ public class SystemPermissionActivity extends BaseActivity {
         recycleView.setAdapter(itemAdapter);
         itemAdapter.setOnItemClickListener(v -> startActivity(getAppDetailSettingIntent()));
         findViewById(R.id.ivGoBack).setOnClickListener(v -> finish());
-        findViewById(R.id.tvToSettings).setOnClickListener(v -> startActivity(getAppDetailSettingIntent()));
     }
 
     @SuppressLint("NotifyDataSetChanged")

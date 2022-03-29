@@ -18,7 +18,8 @@
             android:name=".PrivacyManagerActivity"
             android:exported="false" />
         <activity
-            android:name=".personalinfo.PersonalInfoActivity"
+            android:name=".personalinfo.PersonInfoDownLoadActivity"
+            android:windowSoftInputMode="adjustPan|adjustResize"
             android:exported="false" />
         <activity android:name=".systempermission.SystemPermissionActivity" />
     </application>

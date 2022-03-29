@@ -1,1 +1,4 @@
-<resources></resources>
+<resources>
+    <string name="system_permission_tip">为了向您提供更好的用户体验 PChouse会在特定场景下向您申请以下手机系统权限</string>
+    <string name="info_download_tip">我们会将你的个人信息整理成txt文件，并通过邮箱发送文件下载 链接，全程可能需要一天时间。</string>
+</resources>

@@ -43,14 +43,8 @@ public class PrivacyItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         ItemViewHolder itemHolder = (ItemViewHolder) holder;
          PrivacyBean bean = dataList.get(position);
         itemHolder.tvName.setText(bean.getName());
-        if (bean.getLeftIcon() != 0) {
-            itemHolder.ivLeftIcon.setVisibility(View.VISIBLE);
-            itemHolder.ivLeftIcon.setImageResource(bean.getLeftIcon());
-        }else {
-            itemHolder.ivLeftIcon.setVisibility(View.GONE);
-        }
         if (bean.getRightIcon() != 0) {
-            itemHolder.ivLeftIcon.setImageResource(bean.getRightIcon());
+            itemHolder.ivRightIcon.setImageResource(bean.getRightIcon());
         }
         if (itemClickListener != null) {
             itemHolder.itemView.setTag(bean);
@@ -70,13 +64,11 @@ public class PrivacyItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     }
 
     private static class ItemViewHolder extends RecyclerView.ViewHolder {
-        ImageView ivLeftIcon;
         TextView tvName;
         ImageView ivRightIcon;
 
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
-            ivLeftIcon = itemView.findViewById(R.id.ivLeftIcon);
             tvName = itemView.findViewById(R.id.tvName);
             ivRightIcon = itemView.findViewById(R.id.ivRightIcon);
         }
