@@ -2,6 +2,8 @@ package com.pc.privacylibrary.systempermission;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,8 +31,14 @@ public class SystemPermissionActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_system_permission);
+        ((TextView) findViewById(R.id.tvBarTitle)).setText("系统权限管理");
         PermissionUtils.init();
         initView();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         getIntentData();
     }
 
@@ -43,8 +51,10 @@ public class SystemPermissionActivity extends BaseActivity {
                 initDefaultData();
                 return;
             }
+            List<PrivacyBean> privacyBeans = PermissionUtils.checkGrandState(this, params);
+
             resultList.clear();
-            resultList.addAll(params);
+            resultList.addAll(privacyBeans);
             itemAdapter.notifyDataSetChanged();
         } catch (Exception e) {
             Log.d("xyc", "getIntentData: e=" + e.getMessage());
@@ -60,6 +70,7 @@ public class SystemPermissionActivity extends BaseActivity {
         recycleView.setAdapter(itemAdapter);
         itemAdapter.setOnItemClickListener(v -> startActivity(getAppDetailSettingIntent()));
         findViewById(R.id.ivGoBack).setOnClickListener(v -> finish());
+
     }
 
     @SuppressLint("NotifyDataSetChanged")

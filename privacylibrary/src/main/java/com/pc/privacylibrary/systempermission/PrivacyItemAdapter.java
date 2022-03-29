@@ -22,9 +22,11 @@ import androidx.recyclerview.widget.RecyclerView;
 public class PrivacyItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final List<PrivacyBean> dataList;
     private final LayoutInflater inflater;
+    private Context mContext;
 
     public PrivacyItemAdapter(Context context, List<PrivacyBean> dataList) {
         this.dataList = dataList;
+        mContext = context;
         inflater = LayoutInflater.from(context);
     }
 
@@ -41,11 +43,19 @@ public class PrivacyItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             return;
         }
         ItemViewHolder itemHolder = (ItemViewHolder) holder;
-         PrivacyBean bean = dataList.get(position);
+        PrivacyBean bean = dataList.get(position);
         itemHolder.tvName.setText(bean.getName());
         if (bean.getRightIcon() != 0) {
             itemHolder.ivRightIcon.setImageResource(bean.getRightIcon());
         }
+        if (bean.isGranted()) {
+            itemHolder.tvGrandState.setText("已开启");
+            itemHolder.tvGrandState.setTextColor(mContext.getResources().getColor(R.color.color_AAAAAA));
+        } else {
+            itemHolder.tvGrandState.setText("去设置");
+            itemHolder.tvGrandState.setTextColor(mContext.getResources().getColor(R.color.color_007AFF));
+        }
+        itemHolder.tvSubDsc.setText(bean.getIntroduce() == null ? "" : bean.getIntroduce());
         if (itemClickListener != null) {
             itemHolder.itemView.setTag(bean);
             itemHolder.itemView.setOnClickListener(itemClickListener);
@@ -65,11 +75,15 @@ public class PrivacyItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     private static class ItemViewHolder extends RecyclerView.ViewHolder {
         TextView tvName;
+        TextView tvSubDsc;
+        TextView tvGrandState;
         ImageView ivRightIcon;
 
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
+            tvGrandState = itemView.findViewById(R.id.tvGrandState);
             tvName = itemView.findViewById(R.id.tvName);
+            tvSubDsc = itemView.findViewById(R.id.tvSubDsc);
             ivRightIcon = itemView.findViewById(R.id.ivRightIcon);
         }
 

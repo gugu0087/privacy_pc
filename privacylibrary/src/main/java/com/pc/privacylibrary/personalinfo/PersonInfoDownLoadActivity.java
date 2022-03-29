@@ -25,7 +25,7 @@ public class PersonInfoDownLoadActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_info);
-
+        ((TextView) findViewById(R.id.tvBarTitle)).setText("个人信息下载");
         llPersonInfo = findViewById(R.id.llPersonInfo);
         edtEmail = findViewById(R.id.edtEmail);
         tvDownLoad = findViewById(R.id.tvDownLoad);

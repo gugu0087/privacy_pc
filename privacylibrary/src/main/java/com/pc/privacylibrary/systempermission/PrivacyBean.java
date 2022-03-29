@@ -13,12 +13,14 @@ import androidx.annotation.DrawableRes;
  * @describe：
  */
 public class PrivacyBean implements Parcelable {
-    private String name;
-    private String id;
-    private int leftIcon;
-    private int rightIcon;
-    private String manifest;
-    private String manifestExtra;
+    private String name;///权限名称
+    private String id;// 不填也行
+    private int leftIcon;// 暂时用不上
+    private int rightIcon;// 暂时不需要填
+    private String manifest;// 读写XX权限  比如：write_storage
+    private String manifestExtra;//读写XX权限  这里就写：read_storage
+    private boolean isGranted = false;//是否授权，
+    private String introduce;//权限介绍
 
     protected PrivacyBean(Parcel in) {
         name = in.readString();
@@ -27,6 +29,9 @@ public class PrivacyBean implements Parcelable {
         rightIcon = in.readInt();
         manifest = in.readString();
         manifestExtra = in.readString();
+        isGranted = in.readByte() != 0;
+        introduce = in.readString();
+
     }
 
     public static final Creator<PrivacyBean> CREATOR = new Creator<PrivacyBean>() {
@@ -76,6 +81,14 @@ public class PrivacyBean implements Parcelable {
         this.rightIcon = rightIcon;
     }
 
+    public boolean isGranted() {
+        return isGranted;
+    }
+
+    public void setGranted(boolean granted) {
+        isGranted = granted;
+    }
+
     public String getName() {
         return name;
     }
@@ -92,6 +105,13 @@ public class PrivacyBean implements Parcelable {
         this.id = id;
     }
 
+    public String getIntroduce() {
+        return introduce;
+    }
+
+    public void setIntroduce(String introduce) {
+        this.introduce = introduce;
+    }
 
     @Override
     public int describeContents() {
@@ -100,11 +120,15 @@ public class PrivacyBean implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
+
         parcel.writeString(name);
         parcel.writeString(id);
         parcel.writeInt(leftIcon);
         parcel.writeInt(rightIcon);
         parcel.writeString(manifest);
         parcel.writeString(manifestExtra);
+        parcel.writeByte((byte) (isGranted ? 1 : 0));
+        parcel.writeString(introduce);
     }
+
 }
