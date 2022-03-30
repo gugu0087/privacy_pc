@@ -52,7 +52,6 @@ public class SystemPermissionActivity extends BaseActivity {
                 return;
             }
             List<PrivacyBean> privacyBeans = PermissionUtils.checkGrandState(this, params);
-
             resultList.clear();
             resultList.addAll(privacyBeans);
             itemAdapter.notifyDataSetChanged();
@@ -96,4 +95,5 @@ public class SystemPermissionActivity extends BaseActivity {
         localIntent.setData(Uri.fromParts("package", getPackageName(), null));
         return localIntent;
     }
+
 }

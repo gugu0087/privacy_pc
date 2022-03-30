@@ -19,9 +19,12 @@
             android:exported="false" />
         <activity
             android:name=".personalinfo.PersonInfoDownLoadActivity"
-            android:windowSoftInputMode="adjustPan|adjustResize"
-            android:exported="false" />
-        <activity android:name=".systempermission.SystemPermissionActivity" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan|adjustResize" />
+        <activity
+            android:name=".systempermission.SystemPermissionActivity"
+            android:exported="false"
+            android:launchMode="singleTop" />
     </application>
 
 </manifest>
