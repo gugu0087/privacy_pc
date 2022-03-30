@@ -46,7 +46,7 @@
 
 
     <TextView
-        android:id="@+id/tvRegisterTime"
+        android:id="@+id/tvRegisterTip"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/white"
@@ -59,14 +59,15 @@
         app:layout_constraintTop_toBottomOf="@id/tvPhone" />
 
     <TextView
+        android:id="@+id/tvRegisterTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="16dp"
         android:text="2015年02月07日 20:45:16"
         android:textColor="@color/color_AAAAAA"
-        app:layout_constraintBottom_toBottomOf="@id/tvRegisterTime"
+        app:layout_constraintBottom_toBottomOf="@id/tvRegisterTip"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvRegisterTime" />
+        app:layout_constraintTop_toTopOf="@id/tvRegisterTip" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,6 +17,14 @@ public class UserItemBean implements Parcelable {
         value = in.readString();
     }
 
+    public UserItemBean(String key, String value) {
+        this.key = key;
+        this.value = value;
+    }
+
+    public UserItemBean() {
+    }
+
     public static final Creator<UserItemBean> CREATOR = new Creator<UserItemBean>() {
         @Override
         public UserItemBean createFromParcel(Parcel in) {

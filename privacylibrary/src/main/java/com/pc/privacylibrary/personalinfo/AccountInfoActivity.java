@@ -14,7 +14,13 @@ public class AccountInfoActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_info);
         ((TextView) findViewById(R.id.tvBarTitle)).setText("账号资料");
-        ((TextView) findViewById(R.id.tvNumber)).setText(DataManager.phoneNumber);
+        String s;
+        if (DataManager.phoneNumber != null &&!DataManager.phoneNumber.contains("*")) {
+            s = DataManager.phoneNumber.replaceAll("(\\d{3})\\d{4}(\\d{4})", "$1****$2");
+        } else {
+            s = DataManager.phoneNumber;
+        }
+        ((TextView) findViewById(R.id.tvNumber)).setText(s);
         ((TextView) findViewById(R.id.tvRegisterTime)).setText(DataManager.registerTime);
     }
 }
