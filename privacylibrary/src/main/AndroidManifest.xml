@@ -2,9 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.pc.privacylibrary">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
-        android:supportsRtl="true">
+        android:supportsRtl="true"
+        android:requestLegacyExternalStorage="true">
         <activity
             android:name=".personalinfo.AppInfoActivity"
             android:exported="false" />
@@ -21,6 +24,9 @@
             android:name=".personalinfo.PersonInfoDownLoadActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustPan|adjustResize" />
+        <activity
+            android:name=".personalinfo.PersonInfoDownLoadFinishActivity"
+            android:exported="false" />
         <activity
             android:name=".systempermission.SystemPermissionActivity"
             android:exported="false"

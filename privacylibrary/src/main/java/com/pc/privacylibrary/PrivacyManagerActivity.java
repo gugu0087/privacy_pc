@@ -43,7 +43,6 @@ public abstract class PrivacyManagerActivity extends BaseActivity {
         findViewById(R.id.csPersonInfoDownLoad).setOnClickListener(view -> onPersonalInfoDownload());
         findViewById(R.id.csSystemPermission).setOnClickListener(view -> onSystemPermission());
         findViewById(R.id.csPrivacyPolicy).setOnClickListener(view -> onPrivacyPolicy());
-        findViewById(R.id.csPermissionIntro).setOnClickListener(view -> onPermissionIntro());
 
     }
 

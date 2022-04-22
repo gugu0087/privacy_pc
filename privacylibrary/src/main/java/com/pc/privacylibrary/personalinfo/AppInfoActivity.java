@@ -17,6 +17,7 @@ public class AppInfoActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_info);
         ((TextView) findViewById(R.id.tvBarTitle)).setText("应用相关信息");
+        findViewById(R.id.ivGoBack).setOnClickListener(view -> finish());
         try {
             int labelRes = this.getApplicationInfo().labelRes;
             String label = this.getResources().getString(labelRes);

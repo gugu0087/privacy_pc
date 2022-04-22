@@ -2,10 +2,9 @@ package com.pc.privacylibrary.systempermission;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -26,6 +25,8 @@ public class SystemPermissionActivity extends BaseActivity {
     private final List<PrivacyBean> resultList = new ArrayList<>();
     private PrivacyItemAdapter itemAdapter;
     public static String LIST_PARAMS = "resultList";
+    public static String TITLE_WARN = "title_warn";
+    TextView tvTitleWarn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class SystemPermissionActivity extends BaseActivity {
         setContentView(R.layout.activity_system_permission);
         ((TextView) findViewById(R.id.tvBarTitle)).setText("系统权限管理");
         PermissionUtils.init();
+        tvTitleWarn = findViewById(R.id.tvTitleWarn);
         initView();
     }
 
@@ -47,6 +49,10 @@ public class SystemPermissionActivity extends BaseActivity {
         Intent intent = getIntent();
         try {
             List<PrivacyBean> params = intent.getParcelableArrayListExtra(LIST_PARAMS);
+            String titleWarn = intent.getStringExtra(TITLE_WARN);
+            if (!TextUtils.isEmpty(titleWarn)) {
+                tvTitleWarn.setText(titleWarn);
+            }
             if (params == null || params.size() == 0) {
                 initDefaultData();
                 return;
@@ -67,7 +73,9 @@ public class SystemPermissionActivity extends BaseActivity {
         itemAdapter = new PrivacyItemAdapter(this, resultList);
         recycleView.setLayoutManager(new LinearLayoutManager(this));
         recycleView.setAdapter(itemAdapter);
-        itemAdapter.setOnItemClickListener(v -> startActivity(getAppDetailSettingIntent()));
+        itemAdapter.setOnItemClickListener(v -> {
+            startActivity(getAppDetailSettingIntent());
+        });
         findViewById(R.id.ivGoBack).setOnClickListener(v -> finish());
 
     }
