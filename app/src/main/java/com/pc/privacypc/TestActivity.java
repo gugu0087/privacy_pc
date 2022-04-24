@@ -50,6 +50,11 @@ public class TestActivity extends PrivacyManagerActivity {
     }
 
     @Override
+    protected void onPrivacyPolicyDsc() {
+
+    }
+
+    @Override
     protected void onPermissionIntro() {
 
     }

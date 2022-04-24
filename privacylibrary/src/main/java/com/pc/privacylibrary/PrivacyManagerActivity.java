@@ -22,9 +22,13 @@ public abstract class PrivacyManagerActivity extends BaseActivity {
     protected abstract  void onSystemPermission();
 
     /**
-     * 隐私政策
+     * 隐私政策概要
      */
     protected abstract void onPrivacyPolicy();
+    /**
+     * 隐私政策详情
+     */
+    protected abstract void onPrivacyPolicyDsc();
     /**
      * 应用权限说明
      */
@@ -43,6 +47,7 @@ public abstract class PrivacyManagerActivity extends BaseActivity {
         findViewById(R.id.csPersonInfoDownLoad).setOnClickListener(view -> onPersonalInfoDownload());
         findViewById(R.id.csSystemPermission).setOnClickListener(view -> onSystemPermission());
         findViewById(R.id.csPrivacyPolicy).setOnClickListener(view -> onPrivacyPolicy());
+        findViewById(R.id.csPrivacyPolicyDsc).setOnClickListener(view -> onPrivacyPolicyDsc());
 
     }
 
