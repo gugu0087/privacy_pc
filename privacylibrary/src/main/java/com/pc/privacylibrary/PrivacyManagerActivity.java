@@ -1,5 +1,6 @@
 package com.pc.privacylibrary;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.pc.privacylibrary.base.BaseActivity;
@@ -34,8 +35,6 @@ public abstract class PrivacyManagerActivity extends BaseActivity {
      */
     protected abstract void onPermissionIntro();
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,4 +50,11 @@ public abstract class PrivacyManagerActivity extends BaseActivity {
 
     }
 
+   public void setIsLogin(boolean isLogin){
+        if(isLogin){
+            return;
+        }
+       findViewById(R.id.tvTips1).setVisibility(View.GONE);
+       findViewById(R.id.csPersonalInfoManager).setVisibility(View.GONE);
+   }
 }
