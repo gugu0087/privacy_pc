@@ -53,7 +53,7 @@ public class PersonInfoDownLoadActivity extends BaseActivity {
             ToastView.showCenterToast(PersonInfoDownLoadActivity.this, email + "不是合法的邮箱名。");
             return;
         }
-        tvDownLoad.setEnabled(false);
+        //tvDownLoad.setEnabled(false);
         PersonInfoDLManager.getInstance().notifyListener(email, new DownInfoSuccessListener() {
             @Override
             public void onSuccess(boolean isSuccess) {
@@ -61,12 +61,12 @@ public class PersonInfoDownLoadActivity extends BaseActivity {
                 intent.putExtra(PersonInfoDownLoadFinishActivity.EMAIL_KEY, email);
                 intent.putExtras(intent);
                 startActivity(intent);
-                tvDownLoad.setEnabled(true);
+                //tvDownLoad.setEnabled(true);
             }
 
             @Override
             public void onFail(String error) {
-                tvDownLoad.setEnabled(true);
+                //tvDownLoad.setEnabled(true);
                 if (TextUtils.isEmpty(error)) {
                     ToastView.showCenterToast(PersonInfoDownLoadActivity.this, "服务器繁忙，请稍后重试");
                     return;

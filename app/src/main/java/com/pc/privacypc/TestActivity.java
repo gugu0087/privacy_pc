@@ -58,4 +58,9 @@ public class TestActivity extends PrivacyManagerActivity {
     protected void onPermissionIntro() {
 
     }
+
+    @Override
+    protected void onSlidePrivacyState() {
+
+    }
 }
